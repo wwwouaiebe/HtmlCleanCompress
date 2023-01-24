@@ -45,7 +45,7 @@ class Config {
 	@type {String}
 	*/
 
-	docDir;
+	destDir;
 
 	/**
 	The directory where the app is installed. Coming from the app parameter
@@ -54,14 +54,17 @@ class Config {
 
 	appDir;
 
+	clean;
+
 	/**
 	The constructor
 	*/
 
 	constructor ( ) {
 		this.srcDir = '';
-		this.docDir = '';
+		this.destDir = '';
 		this.appDir = '';
+		this.clean = false;
 	}
 
 }

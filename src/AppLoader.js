@@ -185,11 +185,11 @@ class AppLoader {
 	*/
 
 	#createConfig ( options ) {
-
 		if ( options ) {
 			theConfig.srcDir = options.src;
 			theConfig.destDir = options.dest;
 			theConfig.appDir = process.cwd ( ) + '/node_modules/htmlcleancompress/src';
+			theConfig.clean = options.clean;
 		}
 		else {
 			process.argv.forEach (
@@ -201,6 +201,9 @@ class AppLoader {
 						break;
 					case '--dest' :
 						theConfig.destDir = argContent [ 1 ] || theConfig.destDir;
+						break;
+					case '--clean' :
+						theConfig.clean = true;
 						break;
 					case '--help' :
 						this.#showHelp ( );
@@ -224,9 +227,6 @@ class AppLoader {
 			console.error ( 'The --src and --dest parameters \x1b[31mare the same\x1b[0m' );
 			process.exit ( AppLoader.#EXIT_BAD_PARAMETER );
 		}
-
-		// the config is now frozen
-		Object.freeze ( theConfig );
 	}
 
 	#geneateNewFile ( sourceFileName ) {
@@ -264,7 +264,9 @@ class AppLoader {
 		this.#readDir ( '' );
 
 		// Cleaning old files
-		this.#cleanOldFiles ( );
+		if ( theConfig.clean ) {
+			this.#cleanOldFiles ( );
+		}
 
 		// Generating new files
 		this.#generateNewFiles ( );

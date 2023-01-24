@@ -16,6 +16,9 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
+/* eslint-disable no-magic-numbers */
+
+// eslint-disable-next-line no-undef
 module.exports = function ( grunt ) {
 
 	grunt.initConfig ( {
@@ -35,7 +38,8 @@ module.exports = function ( grunt ) {
 	// Build number
 
 	grunt.config.data.pkg.buildNumber = grunt.file.readJSON ( 'buildNumber.json' ).buildNumber;
-	grunt.config.data.pkg.buildNumber = ( '00000' + ( Number.parseInt ( grunt.config.data.pkg.buildNumber ) + 1 ) ).substr ( -5, 5 );
+	grunt.config.data.pkg.buildNumber =
+		( '00000' + ( Number.parseInt ( grunt.config.data.pkg.buildNumber ) + 1 ) ).slice ( -5 );
 	grunt.file.write ( 'buildNumber.json', '{ "buildNumber" : "' + grunt.config.data.pkg.buildNumber + '"}' );
 
 	grunt.loadNpmTasks ( 'grunt-eslint' );
@@ -45,7 +49,16 @@ module.exports = function ( grunt ) {
 		[ 'eslint' ]
 	);
 
-	console.log ( '---------------------------------------------------------------------------------------------------------------------------------------------' );
-	console.log ( '\n                                     ' + grunt.config.data.pkg.name + ' - ' + grunt.config.data.pkg.version + ' - build: ' + grunt.config.data.pkg.buildNumber + ' - ' + grunt.template.today ( 'isoDateTime' ) + '\n' );
-	console.log ( '---------------------------------------------------------------------------------------------------------------------------------------------' );
+	/* eslint-disable no-console */
+
+	console.log ( '-------------------------------------------------------------------------------------------------------' );
+	console.log (
+		'\n                                     ' +
+		grunt.config.data.pkg.name +
+		' - ' +
+		grunt.config.data.pkg.version +
+		' - build: ' + grunt.config.data.pkg.buildNumber +
+		' - ' +
+		grunt.template.today ( 'isoDateTime' ) + '\n' );
+	console.log ( '-------------------------------------------------------------------------------------------------------' );
 };
