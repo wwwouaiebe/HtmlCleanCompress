@@ -221,7 +221,7 @@ class AppLoader {
 		theConfig.appDir = this.#validatePath ( theConfig.appDir );
 
 		if ( theConfig.srcDir === theConfig.destDir ) {
-			console.error ( 'The --src and --dest parameters \x1b[31mare the same\x1b[0m');
+			console.error ( 'The --src and --dest parameters \x1b[31mare the same\x1b[0m' );
 			process.exit ( AppLoader.#EXIT_BAD_PARAMETER );
 		}
 
@@ -241,9 +241,7 @@ class AppLoader {
 	}
 
 	#generateNewFiles ( ) {
-		this.#sourceFileNames.forEach (
-			sourceFileName => { this.#geneateNewFile ( sourceFileName ); }
-		);
+		this.#sourceFileNames.forEach ( this.#geneateNewFile );
 	}
 
 	/**
