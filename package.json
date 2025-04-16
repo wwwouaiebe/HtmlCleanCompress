@@ -6,7 +6,7 @@
   "bin": {
     "fc": "./src/index.js"
   },
-  "version": "1.0.5",
+  "version": "1.0.6",
   "keywords": [ ],
   "devDependencies": {
     "eslint": "latest",
@@ -18,7 +18,7 @@
     "url": "git+https://github.com/wwwouaiebe/HtmlCleanCompress.git"
   },
   "engines": {
-    "node": ">=18.18.2"
+    "node": ">=22.14.0"
   },
   "scripts": {
     "debug": "node node_modules/grunt/bin/grunt"
