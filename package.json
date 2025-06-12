@@ -6,7 +6,7 @@
   "bin": {
     "fc": "./src/index.js"
   },
-  "version": "1.0.6",
+  "version": "1.0.7",
   "keywords": [ ],
   "devDependencies": {
     "eslint": "latest",
